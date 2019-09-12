@@ -42,6 +42,7 @@ public class JPAUtil2Test {
     public void testCreateEM() {
         EntityManager em =JPAUtil2.getEntityManager();
         assertNotNull(em);
+        //versao 0
     }
     
 }
