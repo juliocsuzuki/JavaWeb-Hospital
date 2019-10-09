@@ -1,0 +1,14 @@
+body {
+    padding: 1%; 
+    background-color: #F8F8FF;
+    font-size: 12px;
+    background-image: URL("http://4.bp.blogspot.com/-uNjoCuCu8bU/U5iaZX9XHTI/AAAAAAAABsI/ZoaccJk4NIg/s1600/Cristiano+Ronaldo+e+os+seus+caes.jpg");
+}
+
+.cabecalho{
+    height: 10%; 
+    width: 100%; 
+    background-color: buttonface; 
+    background-color: #FFD700;
+    
+}
