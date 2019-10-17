@@ -21,10 +21,11 @@ public class Tutor implements Serializable {
     private String nome;
     @Column (length = 30)
     private String cpf;
-    @Column (length = 30)
+    @Column (length = 11)
     private String endereço;
     @Column (length = 30)
     private String telefone;
+    @Column (length = 30)
     @OneToMany(mappedBy = "tutor", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Animal> animal;
     

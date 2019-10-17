@@ -11,39 +11,53 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Animal implements Serializable {
+public class Animal implements Serializable {   
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     @Column(length = 30)
-    String name;
+    private String especie;
     @Column(length = 30)
-    String proprietario;
+    private String raca;
     @Column(length = 30)
-    String especi;
-    @Column(length = 30)
-    String raca;
-
-    public Animal(String nome, String proprietario, String especie, String raca) {
-        this.name = nome;
-        this.proprietario = proprietario;
-        this.especi = especie;
+    private Integer idade;
+      private String dono;
+    @Column
+    
+    @ManyToOne
+    @JoinColumn(name = "tutor")
+    private Tutor tutor;
+    
+    public Animal(){
+        this.especie = "";
+        this.raca = "";
+        this.dono = "";
+        this.idade = 0;
+        this.tutor = new Tutor();
+    }
+    
+    public Animal(String especie, String raca, String nome, Integer idade, Tutor tutor){
+        this.especie = especie;
         this.raca = raca;
+        this.dono = nome;
+        this.idade = idade;
+        this.tutor = tutor;
     }
 
-    public String getProprietario() {
-        return proprietario;
+    public Integer getId() {
+        return id;
     }
 
-    public void setProprietario(String proprietario) {
-        this.proprietario = proprietario;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getEspeci() {
-        return especi;
+    public String getEspecie() {
+        return especie;
     }
 
-    public void setEspeci(String especi) {
-        this.especi = especi;
+    public void setEspecie(String especie) {
+        this.especie = especie;
     }
 
     public String getRaca() {
@@ -54,13 +68,39 @@ public class Animal implements Serializable {
         this.raca = raca;
     }
 
+    public String getNome() {
+        return dono;
+    }
+
+    public void setNome(String nome) {
+        this.dono = nome;
+    }
+
+    public Integer getIdade() {
+        return idade;
+    }
+
+    public void setIdade(Integer idade) {
+        this.idade = idade;
+    }
+
+    public Tutor getTutor() {
+        return tutor;
+    }
+
+    public void setTutor(Tutor tutor) {
+        this.tutor = tutor;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 29 * hash + Objects.hashCode(this.name);
-        hash = 29 * hash + Objects.hashCode(this.proprietario);
-        hash = 29 * hash + Objects.hashCode(this.especi);
-        hash = 29 * hash + Objects.hashCode(this.raca);
+        int hash = 3;
+        hash = 79 * hash + Objects.hashCode(this.id);
+        hash = 79 * hash + Objects.hashCode(this.especie);
+        hash = 79 * hash + Objects.hashCode(this.raca);
+        hash = 79 * hash + Objects.hashCode(this.dono);
+        hash = 79 * hash + Objects.hashCode(this.idade);
+        hash = 79 * hash + Objects.hashCode(this.tutor);
         return hash;
     }
 
@@ -76,16 +116,22 @@ public class Animal implements Serializable {
             return false;
         }
         final Animal other = (Animal) obj;
-        if (!Objects.equals(this.name, other.name)) {
-            return false;
-        }
-        if (!Objects.equals(this.proprietario, other.proprietario)) {
-            return false;
-        }
-        if (!Objects.equals(this.especi, other.especi)) {
+        if (!Objects.equals(this.especie, other.especie)) {
             return false;
         }
         if (!Objects.equals(this.raca, other.raca)) {
+            return false;
+        }
+        if (!Objects.equals(this.dono, other.dono)) {
+            return false;
+        }
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.idade, other.idade)) {
+            return false;
+        }
+        if (!Objects.equals(this.tutor, other.tutor)) {
             return false;
         }
         return true;
@@ -93,66 +139,7 @@ public class Animal implements Serializable {
 
     @Override
     public String toString() {
-        return "Animal{" + "nome=" + name + ", proprietario=" + proprietario + ", especie=" + especi + ", raca=" + raca + '}';
-    }
-    private Integer id;
-    @Column(length = 30)
-    private String especie;
-    @Column(length = 30)
-    private String nome;
-    
-    @ManyToOne
-    @JoinColumn(name = "tutor")
-    private Tutor tutor;
-    
-    public Animal(){
-        this.name = "";
-        this.especi = "";
-        this.tutor = new Tutor();
-    }
-    
-    public Animal(String nome, Tutor tutor){
-        this.name = nome;
-        this.especi = especi;
-        this.tutor = tutor;
+        return "Animal{" + "id=" + id + ", especie=" + especie + ", raca=" + raca + ", nome=" + dono + ", idade=" + idade + ", tutor=" + tutor + '}';
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    /*public String getEspeci() {
-        return especi;
-    }
-
-    //public void setEspeci(String especie) {
-        this.especi = especie;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Tutor getTutor() {
-        return tutor;
-    }
-
-    public void setTutor(Tutor tutor) {
-        this.tutor = tutor;
-    }*/
 }
-
-    
-    
-
-   
-    
- 
