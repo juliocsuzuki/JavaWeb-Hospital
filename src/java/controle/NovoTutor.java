@@ -15,16 +15,16 @@ import modelo.Tutor;
 @ViewScoped
 public class NovoTutor implements Serializable {
     private List<Tutor> tutores;
-    private Tutor proprietario;
+    private Tutor dono;
     private DAO<Tutor> dao;
     
     public NovoTutor(){
-        proprietario = new Tutor();
+        dono = new Tutor();
         dao = new DAO(Administrador.class);
         
     }
     public void salvar(){
-        dao.inserir(proprietario);
+        dao.inserir(dono);
     }
     public List<Tutor> getTutores() {
         return tutores;
@@ -35,11 +35,11 @@ public class NovoTutor implements Serializable {
     }
 
     public Tutor getProprietario() {
-        return proprietario;
+        return dono;
     }
 
     public void setProprietario(Tutor propietario) {
-        this.proprietario = propietario;
+        this.dono = propietario;
     }
 
     public DAO<Tutor> getDao() {

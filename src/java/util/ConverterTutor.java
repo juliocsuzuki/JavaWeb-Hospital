@@ -8,7 +8,7 @@ import javax.faces.convert.ConverterException;
 import javax.faces.convert.FacesConverter;
 import modelo.Tutor;
 
-@FacesConverter(value = "cursoConverter")
+@FacesConverter(value = "donoConverter")
 public class ConverterTutor implements Converter {
 
     @Override
