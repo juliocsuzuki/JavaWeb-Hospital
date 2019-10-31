@@ -1,49 +1,49 @@
 package modelo;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+
 @Entity
-public class Animal implements Serializable {   
+public class Animal implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Integer id;
+    
     @Column(length = 30)
-    private String especie;
+    private String nome;
+    
     @Column(length = 30)
     private String raca;
-    @Column(length = 30)
-    private Integer idade;
-      private String dono;
-    @Column
     
     @ManyToOne
-    @JoinColumn(name = "tutor")
-    private Tutor tutor;
-    
-    public Animal(){
-        this.especie = "";
+    @JoinColumn(name = "dono")
+    private Dono dono;
+
+// construtores    
+    public Animal() {
+        this.nome = "";
         this.raca = "";
-        this.dono = "";
-        this.idade = 0;
-        this.tutor = new Tutor();
+        this.dono = new Dono();
     }
     
-    public Animal(String especie, String raca, String nome, Integer idade, Tutor tutor){
-        this.especie = especie;
+    public Animal(String nome, String raca, Dono dono) {
+        this.nome = nome;
         this.raca = raca;
-        this.dono = nome;
-        this.idade = idade;
-        this.tutor = tutor;
+        this.dono = dono;
     }
 
+//gets and seters
     public Integer getId() {
         return id;
     }
@@ -52,14 +52,14 @@ public class Animal implements Serializable {
         this.id = id;
     }
 
-    public String getEspecie() {
-        return especie;
+    public String getNome() {
+        return nome;
     }
 
-    public void setEspecie(String especie) {
-        this.especie = especie;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
-
+    
     public String getRaca() {
         return raca;
     }
@@ -68,39 +68,19 @@ public class Animal implements Serializable {
         this.raca = raca;
     }
 
-    public String getNome() {
+    public Dono getDono() {
         return dono;
     }
 
-    public void setNome(String nome) {
-        this.dono = nome;
-    }
-
-    public Integer getIdade() {
-        return idade;
-    }
-
-    public void setIdade(Integer idade) {
-        this.idade = idade;
-    }
-
-    public Tutor getTutor() {
-        return tutor;
-    }
-
-    public void setTutor(Tutor tutor) {
-        this.tutor = tutor;
+    public void setDono(Dono dono) {
+        this.dono = dono;
     }
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 79 * hash + Objects.hashCode(this.id);
-        hash = 79 * hash + Objects.hashCode(this.especie);
-        hash = 79 * hash + Objects.hashCode(this.raca);
-        hash = 79 * hash + Objects.hashCode(this.dono);
-        hash = 79 * hash + Objects.hashCode(this.idade);
-        hash = 79 * hash + Objects.hashCode(this.tutor);
+        int hash = 7;
+        hash = 17 * hash + Objects.hashCode(this.id);
+        hash = 17 * hash + Objects.hashCode(this.nome);
         return hash;
     }
 
@@ -116,22 +96,10 @@ public class Animal implements Serializable {
             return false;
         }
         final Animal other = (Animal) obj;
-        if (!Objects.equals(this.especie, other.especie)) {
-            return false;
-        }
-        if (!Objects.equals(this.raca, other.raca)) {
-            return false;
-        }
-        if (!Objects.equals(this.dono, other.dono)) {
+        if (!Objects.equals(this.nome, other.nome)) {
             return false;
         }
         if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        if (!Objects.equals(this.idade, other.idade)) {
-            return false;
-        }
-        if (!Objects.equals(this.tutor, other.tutor)) {
             return false;
         }
         return true;
@@ -139,7 +107,7 @@ public class Animal implements Serializable {
 
     @Override
     public String toString() {
-        return "Animal{" + "id=" + id + ", especie=" + especie + ", raca=" + raca + ", nome=" + dono + ", idade=" + idade + ", tutor=" + tutor + '}';
+        return "Animal{" + "id=" + id + ", nome=" + nome + ", raca=" + raca + '}';
     }
 
 }

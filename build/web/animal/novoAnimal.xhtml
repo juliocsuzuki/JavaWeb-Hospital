@@ -26,16 +26,10 @@
                              requiredMessage="Raça obrigatório" 
                              maxlength="10" />
                 
-                 <p:outputLabel value="Idade: "/>
-                <p:inputText value="#{novoAnimal.animal.idade}" 
-                             required="true" 
-                             requiredMessage="Idade obrigatória" 
-                             maxlength="3" />
-                
                 <p:outputLabel value="Especie:  " />
                 <p:selectOneMenu id="comboEspecies"  
                                  required="true" requiredMessage="Espécie obrigatória"  
-                                 value="#{novoAnimal.animal.especie}">
+                                 value="#{novoAnimal.animal.raca}">
                     <f:selectItem itemValue="#{null}" itemLabel="Escolha uma espécie" 
                                   noSelectionOption="false"/>
                     <f:selectItem  itemValue="Canino" itemLabel="Canino"/>

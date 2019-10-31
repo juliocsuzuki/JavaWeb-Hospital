@@ -1,4 +1,3 @@
-  
 package controle;
 
 import dao.DAO;
